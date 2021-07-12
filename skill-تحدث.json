@@ -1,0 +1,482 @@
+{
+  "intents": [
+    {
+      "intent": "أخرى",
+      "examples": [
+        {
+          "text": "باي"
+        },
+        {
+          "text": "مع السلامة"
+        },
+        {
+          "text": "يعطيك العافية"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "الاسئلة",
+      "examples": [
+        {
+          "text": "ما هو التدريب المهني؟"
+        },
+        {
+          "text": "هل تتطلب الحضور للمقر؟"
+        },
+        {
+          "text": "هل هناك شهادة ؟"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "ترحيب",
+      "examples": [
+        {
+          "text": "hi"
+        },
+        {
+          "text": "السلام عليكم"
+        },
+        {
+          "text": "الله يحييك"
+        },
+        {
+          "text": "هاااي"
+        },
+        {
+          "text": "يا هلا"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "أخرى",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "أرقام_المهندسين",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "أرقام المهندسين",
+          "synonyms": [
+            "٤",
+            "four"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "إيميلات_المهندسين",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "إيميلات_المهندسين",
+          "synonyms": [
+            "٥",
+            "five"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "اسماء_المهندسين",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "أسماء المهندسين",
+          "synonyms": [
+            "٣",
+            "three"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "الاسئلة_الشائعة",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "١",
+          "synonyms": [
+            "one",
+            "الاسئلة الشائعة"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "المسارات_المتاحة",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "المسارات المتاحة",
+          "synonyms": [
+            "٢",
+            "two"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "قروبات_التيلجرام",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "قروبات التيلجرام",
+          "synonyms": [
+            "٦",
+            "six"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "وعليكم السلام  "
+              },
+              {
+                "text": "يا هلاا "
+              },
+              {
+                "text": "الله يبقيك"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_3_1626059809645"
+      },
+      "conditions": "#ترحيب",
+      "dialog_node": "node_10_1626059642372",
+      "previous_sibling": "مرحبا"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "\"م. اسماء \"مسار انترنت الاشياء\n\"م. محمد \"مسار الهندسة الصناعية \n\"م. رهف \"مسار الذكاء الاصطناعي\n\"م. عصام \"مسار الهندسة الميكانيكية "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1626064765777",
+      "conditions": "@اسماء_المهندسين",
+      "dialog_node": "node_1_1626064226818",
+      "previous_sibling": "node_3_1626064326117"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": ".. سعدت بخدمتك "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#أخرى",
+      "dialog_node": "node_1_1626065050289",
+      "previous_sibling": "node_9_1626064765777"
+    },
+    {
+      "type": "standard",
+      "title": "الخيارات 1",
+      "output": {
+        "generic": [
+          {
+            "title": "وش اللي يدور في بالك .. وحاب تسأل عنه؟",
+            "options": [
+              {
+                "label": "1- الاسئلة الشائعة",
+                "value": {
+                  "input": {
+                    "text": "1"
+                  }
+                }
+              },
+              {
+                "label": "2- المسارات المتاحة",
+                "value": {
+                  "input": {
+                    "text": "2"
+                  }
+                }
+              },
+              {
+                "label": "3- اسماء المهندسين",
+                "value": {
+                  "input": {
+                    "text": "3"
+                  }
+                }
+              },
+              {
+                "label": "4- أرقام المهندسين",
+                "value": {
+                  "input": {
+                    "text": "4"
+                  }
+                }
+              },
+              {
+                "label": "5- إيميلات المهندسين",
+                "value": {
+                  "input": {
+                    "text": "5"
+                  }
+                }
+              },
+              {
+                "label": "6- قروبات التيلجرام",
+                "value": {
+                  "input": {
+                    "text": "6"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "dialog_node": "node_3_1626059809645",
+      "previous_sibling": "node_10_1626059642372"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "الهندسة الميكانيكية t.cm/channel/enginneringm\nالهندسة الصناعية:t.cm/channel/enginneringInd\nالذكاء الاصطناعي : t.cm/channel/AI\nانترنت الاشياء : t.cm/channel/IoT"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1626064765777",
+      "conditions": "@قروبات_التيلجرام",
+      "dialog_node": "node_3_1626064326117"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": " هناك 6 مسارات : مسار الميكانيكي، مسار الهندسي ، مسار الصناعي ، مسار الذكاء الاصطناعي، مسار انترنت الاشياء"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1626064765777",
+      "conditions": "@المسارات_المتاحة",
+      "dialog_node": "node_4_1626063109325",
+      "previous_sibling": "node_6_1626063529007"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "م. عصام : 0550000001\nم. محمد : 0550000002\nم. رهف: 0550000003\nم. أسماء : 0550000004\nللمهندسين اوقات محددة للرد على استفساراتكم ، فالرجاء التكرم والتحدث في أوقات العمل فقط\nمن الاحد- الخميس : 7 صباحاً حتى -2 ظهراً"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1626064765777",
+      "conditions": "@أرقام_المهندسين",
+      "dialog_node": "node_6_1626063529007",
+      "previous_sibling": "node_9_1626064120440"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "ما معنى التدريب المهني ؟ هو التدريب على رأس العمل "
+              },
+              {
+                "text": "هل تتطلب الحضور للمقر ؟ لا، ولمن أراد الحضور لابد من طلب إذن للحضور"
+              },
+              {
+                "text": "هل هناك شهادة ؟ نعم ولكن تصدر برسوم 600 ريال ولا يتم إعطاء الشهادة الا لمن اتمم 320 ساعة"
+              },
+              {
+                "text": ""
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_9_1626064765777",
+      "conditions": "@الاسئلة_الشائعة",
+      "dialog_node": "node_8_1626062633908",
+      "previous_sibling": "node_4_1626063109325"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "asam.12@hotmail.com : م.عصام\nrahef.12@hotmail.com : م.رهف\nmohammed.12@hotmail.com : م. محمد\nAsma.12@hotmail.com : م. أسماء"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1626064765777",
+      "conditions": "@إيميلات_المهندسين",
+      "dialog_node": "node_9_1626064120440",
+      "previous_sibling": "node_1_1626064226818"
+    },
+    {
+      "type": "folder",
+      "dialog_node": "node_9_1626064765777",
+      "previous_sibling": "node_3_1626059809645"
+    },
+    {
+      "type": "standard",
+      "title": "أي شيء آخر",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "لم أفهم، يمكنك محاولة اعادة الصياغة"
+              },
+              {
+                "text": "هل يمكنك اعادة صياغة عبارتك؟ أنا لا فهم"
+              },
+              {
+                "text": "لم أفهم قصدك"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "أي شيء آخر",
+      "previous_sibling": "node_1_1626065050289",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "مرحبا",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "هلاا والله"
+              },
+              {
+                "text": "اهليين"
+              },
+              {
+                "text": "نورتنا"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "مرحبا"
+    }
+  ],
+  "counterexamples": [
+    {
+      "text": "٢"
+    },
+    {
+      "text": "هلا بك"
+    }
+  ],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "هل قصدت: الاسئلة الشائعة",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "كل ما سبق خطأ"
+    },
+    "human_agent_assist": {
+      "prompt": ":هل قصدت"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "تحدث",
+  "language": "ar",
+  "description": ""
+}
