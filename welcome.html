@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Welcome </title>
+<meta charset="UTF-8">
+<style>
+img { height:300px ; width:300px; position: center;}
+.t { font-family:Sakkal Majalla, Arial; font-size:30px}
+</style>
+</head>
+<body>
+<center> <img src = "methods logo.jpg"> </center>
+<center class="t"> أهلين باللي مكملنا ، وجزء منا  <br> .. عشانك غالي علينا  <br> خصصنا لك مساعد يقدم لك معلومات حولنا <br>  .. ويجاوب على أكثر الاسئلة الشائعة اللي تطري في بالك  <br> ..نورتنا   </center>
+
+
+
+<script>
+  window.watsonAssistantChatOptions = {
+      integrationID: "a9cc143d-f0ed-4967-b3e4-a38d489e6ac5", // The ID of this integration.
+      region: "eu-de", // The region your integration is hosted in.
+      serviceInstanceID: "f0edc880-dd94-4f20-8677-2ba4dd722fef", // The ID of your service instance.
+      onLoad: function(instance) { instance.render(); }
+    };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
+    document.head.appendChild(t);
+  });
+</script>
+</body>
+</html>
